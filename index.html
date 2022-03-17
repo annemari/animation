@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piltide animatsioon</title>
+
+  <script>
+    //Piltide kuvamine
+    pildid = new Array()
+
+    for (i = 1; i < 5; i++) {
+
+      pildid[i] = new Image()
+
+      pildid[i].src = "img" + i + ".jpg"
+
+    }
+
+
+
+    // piltide järjekord
+    var pildi_nr = 1
+    var pildi2_nr = 2
+    var pildi3_nr = 3
+    var pildi4_nr = 4
+
+    // piltide animatsiooni funktsioon
+    function animeeri() {
+
+      document.anim1.src = pildid[pildi_nr].src
+      pildi_nr++
+
+      if (pildi_nr > 4) pildi_nr = 1
+      document.anim2.src = pildid[pildi2_nr].src
+      pildi2_nr++
+
+      if (pildi2_nr > 4) pildi2_nr = 1
+      document.anim3.src = pildid[pildi3_nr].src
+      pildi3_nr++
+
+      if (pildi3_nr > 4) pildi3_nr = 1
+      document.anim4.src = pildid[pildi4_nr].src
+      pildi4_nr++
+
+      if (pildi4_nr > 4) pildi4_nr = 1
+
+    }
+
+    //Kiirendamiseks funktsioon
+
+    var milsek = 700
+
+    function Kiiremini() {
+
+      milsek -= 150
+
+      if (milsek < 0) milsek = 0
+
+    }
+
+
+    //Aeglastamiseks funktsioon
+    function Aeglasemalt() {
+
+      milsek += 150
+
+      if (milsek > 4000) milsek = 4000
+
+    }
+  </script>
+  <style>
+    .pildid ul li img {
+      width: 300px;
+    }
+
+    .pildid ul li {
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .pildid {
+      margin-left: 70px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px;
+      background-color: #204158;
+      padding: 10px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .btn {
+      margin-left: 40%;
+    }
+
+    body {
+      background-color: #16334A;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+
+  <div class="pildid">
+    <ul>
+      <li> <img onLoad="setTimeout('animeeri()', milsek)" class="main-img" src="img1.jpg" name="anim1">
+      </li>
+      <li>
+        <img class="main-img" src="img2.jpg" name="anim2">
+      </li>
+      <li>
+        <img class="main-img" src="img3.jpg" name="anim3">
+      </li>
+      <li>
+        <img class="main-img" src="img4.jpg" name="anim4">
+      </li>
+    </ul>
+
+    <div class="btn">
+
+  <button onclick="Kiiremini()">Kiiremini</button>
+    <button onclick="Aeglasemalt()">Aeglasemalt</button>
+      </div>
+  </div>
+
+
+
+
+
+
+</body>
+
+</html>
